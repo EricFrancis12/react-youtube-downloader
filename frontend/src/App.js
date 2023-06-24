@@ -31,7 +31,7 @@ function App() {
     // check if ytURL_Ref is a valid YouTube URL or video ID; return if both are false.
 
     setViewport('loading');
-    const res = await fetch('http://localhost:3000/info', {
+    const res = await fetch('/info', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -55,7 +55,7 @@ function App() {
     e.preventDefault();
 
     setDownload('loading');
-    const res = await fetch('http://localhost:3000/download', {
+    const res = await fetch('/download', {
       headers: {
         'Content-Type': 'application/json'
       },
