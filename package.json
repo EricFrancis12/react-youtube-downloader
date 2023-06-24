@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install && cd frontend && npm install && npm run build && cd ../",
-    "local_build": "cd frontend && npm run build && cd ../",
+    "buildDev": "cd frontend && npm run build && cd ../",
     "start": "node index.js && cd frontend && npm start && cd ../"
   },
   "keywords": [],

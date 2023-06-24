@@ -12,7 +12,8 @@ app.use(express.static('public'));
 
 const ytdl = require('ytdl-core');
 
-const merge = require('./methods/merge2');
+const merge = require('./methods/merge');
+const merge2 = require('./methods/merge2');
 
 
 
@@ -103,7 +104,11 @@ app.post('/download', async (req, res) => {
             videoStream.pipe(res);
         } else {
             const mergedPath = `./tmp/${crypto.randomUUID()}.mp4`;
-            await merge(req.body.v, req.body.itag, mergedPath);
+            if (req.query.merge === '1') {
+                await merge(req.body.v, req.body.itag, mergedPath);
+            } else {
+                await merge2(req.body.v, req.body.itag, mergedPath);
+            }
 
             const stream = fs.createReadStream(mergedPath);
             const stat = fs.statSync(mergedPath);
